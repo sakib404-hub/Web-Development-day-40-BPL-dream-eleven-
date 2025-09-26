@@ -7,6 +7,7 @@ import Loader from './Component/Loader'
 import Player from './Component/Player'
 import { ToastContainer } from 'react-toastify';
 import Banner from './Component/Banner'
+import Footer from './Component/Footer'
 
 
 
@@ -42,7 +43,7 @@ function App() {
     <>
       {/* navbar components  */}
       <Navbar availableBalance={availableBalance}></Navbar>
-
+      {/* Banner Component  */}
       <Banner></Banner>
       <div className=' max-w-[1240px] mx-auto my-[50px] mt-[100px]  flex flex-col gap-2 md:flex-row justify-between items-center'>
         <h1 className='font-bold text-2xl'>{toogle ? "Available Players" : `Selected Players (${selectedPlayers.length}/6)`}</h1>
@@ -65,6 +66,7 @@ function App() {
           selectedPlayers={selectedPlayers}
           handleDelete={handleDelete}></SelectedPlayers>
       }
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </>
   )
