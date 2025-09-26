@@ -64,7 +64,9 @@ function App() {
             setSelectedPlayers={setSelectedPlayers}></AvailablePlayers>
         </Suspense> : <SelectedPlayers
           selectedPlayers={selectedPlayers}
-          handleDelete={handleDelete}></SelectedPlayers>
+          handleDelete={handleDelete}
+          setToogle={setToogle}
+          toogle={toogle}></SelectedPlayers>
       }
       <Footer></Footer>
       <ToastContainer></ToastContainer>
