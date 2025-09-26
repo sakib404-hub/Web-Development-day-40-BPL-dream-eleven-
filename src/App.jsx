@@ -4,6 +4,9 @@ import AvailablePlayers from './Component/AvailablePlayers'
 import Navbar from './Component/Navbar.Jsx'
 import SelectedPlayers from './Component/SelectedPlayers'
 import Loader from './Component/Loader'
+import Player from './Component/Player'
+import { ToastContainer } from 'react-toastify';
+
 
 
 const fetchPlayers = async () => {
@@ -27,9 +30,11 @@ function App() {
     setToogle(flag);
   }
 
-  const handleDelete = (id) => {
-    const newSelectedPlayer = selectedPlayers.filter((player) => player.id !== id)
+  const handleDelete = (p) => {
+    const newSelectedPlayer = selectedPlayers.filter((player) => player.id !== p.id)
     setSelectedPlayers(newSelectedPlayer)
+    const newBalance = availableBalance + p.price;
+    setAvailableBalance(newBalance)
   }
 
   return (
@@ -37,7 +42,7 @@ function App() {
       {/* navbar components  */}
       <Navbar availableBalance={availableBalance}></Navbar>
 
-      <div className=' max-w-[1240px] mx-auto my-[50px] mt-[100px] flex justify-between items-center'>
+      <div className=' max-w-[1240px] mx-auto my-[50px] mt-[100px]  flex flex-col gap-2 md:flex-row justify-between items-center'>
         <h1 className='font-bold text-2xl'>{toogle ? "Available Players" : `Selected Players (${selectedPlayers.length}/6)`}</h1>
         <div className=''>
           {/* conditionally applying the background color  */}
@@ -58,6 +63,7 @@ function App() {
           selectedPlayers={selectedPlayers}
           handleDelete={handleDelete}></SelectedPlayers>
       }
+      <ToastContainer></ToastContainer>
     </>
   )
 }

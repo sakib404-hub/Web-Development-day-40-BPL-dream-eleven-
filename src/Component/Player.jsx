@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import titleIcon from '../assets/Group.png'
 import countryFlag from '../assets/report 1.png'
+import { toast } from 'react-toastify';
 
 const Player = ({ player, setAvailableBalance, availableBalance, setSelectedPlayers, selectedPlayers }) => {
 
@@ -8,15 +9,16 @@ const Player = ({ player, setAvailableBalance, availableBalance, setSelectedPlay
 
     const handleSelected = (player) => {
         if (selectedPlayers.length >= 6) {
-            alert('You can not purchase more than 6 Player!')
+            toast('You can not purchase more than 6 Player!')
         }
         else if (availableBalance > player.price) {
+            toast('Player Selected!');
             setAvailableBalance(availableBalance - price);
             const flag = isSeleted ? false : true;
             setIsSelected(flag);
             setSelectedPlayers([...selectedPlayers, player])
         } else {
-            alert('You DO not Have Enough Money!')
+            toast('You DO not Have Enough Money!')
         }
     }
 

@@ -14,7 +14,7 @@ const SelectedPlayer = ({ player, handleDelete }) => {
                     <p className='text-gray-400'>{player.role}</p>
                 </div>
             </div>
-            <button className='cursor-pointer' onClick={() => { handleDelete(player.id) }}>
+            <button className='cursor-pointer' onClick={() => { handleDelete(player) }}>
                 <img src={delIcon} alt="" />
             </button>
         </div>
